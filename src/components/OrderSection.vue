@@ -34,15 +34,20 @@
           /></order-item>
         </div>
         <div class="order__inputs">
-          <select class="order__select" name="" id="">
-            <option class="order__option" value="1">1</option>
-            <option class="order__option" value="2">2</option>
-            <option class="order__option" value="3">3</option>
+          <select class="order__select" name="select">
+            <div class="placeholder" data-text="Выберите тип системы"></div>
+            <option class="order__option" value="1">Sed ut perspiciatis</option>
+            <option class="order__option" value="2">Nemo enim ipsam</option>
+            <option class="order__option" value="3">Et harum quidem</option>
+            <option class="order__option" value="4">Temporibus autem</option>
+            <option class="order__option" value="5">Itaque earum rerum</option>
           </select>
           <input class="order__input" type="text" placeholder="Ваш e-mail" />
           <input class="order__input" type="text" placeholder="Ваше имя" />
           <div class="order__range">
-            <span>{{ range }}</span>
+            <h6 class="order__range_text">
+              Sed ut perspiciatis, unde omnis iste natus
+            </h6>
             <input
               class="slider"
               type="range"
@@ -54,9 +59,10 @@
             />
           </div>
 
-          <my-button class="btn"
+          <my-button class="order__btn_file"
             ><img src="../assets/btn.png" alt="" />Прикрепить файл</my-button
           >
+          <my-button class="order__btn_send">Отправить</my-button>
         </div>
       </div>
     </div>
@@ -160,6 +166,9 @@ $ffamily: "Lato", sans-serif;
   padding: 10px;
   border-radius: 3px;
   border: 1px solid #fff;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: $ffamily;
   background: rgba(255, 255, 255, 0.85);
   &:focus {
     background: rgba(61, 64, 80, 0.85);
@@ -170,6 +179,9 @@ $ffamily: "Lato", sans-serif;
 .order__option {
   background: rgba(39, 39, 51, 0.9);
   color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: $ffamily;
   &:hover {
     color: $color;
     background-color: none;
@@ -183,6 +195,14 @@ $ffamily: "Lato", sans-serif;
   border-radius: 3px;
   border: 1px solid #fff;
   background: rgba(255, 255, 255, 0.85);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.order__range_text {
+  padding-bottom: 20px;
+  color: #fff;
+  font-family: $ffamily;
   font-size: 18px;
   font-weight: 400;
 }
@@ -225,12 +245,24 @@ $ffamily: "Lato", sans-serif;
   background: $color;
   cursor: pointer;
 }
-.btn {
+.order__btn_file {
   color: #272733;
   font-family: $ffamily;
   font-size: 15px;
   font-weight: 600;
   text-transform: uppercase;
   width: 100%;
+}
+.order__btn_send {
+  color: #fff;
+  font-family: $ffamily;
+  background: $color;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  width: 100%;
+  grid-row-start: 3;
+  grid-column-start: 2;
+  grid-column-end: 3;
 }
 </style>

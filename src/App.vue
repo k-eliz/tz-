@@ -2,18 +2,21 @@
   <main-header></main-header>
   <my-intro></my-intro>
   <order-section></order-section>
+  <main-footer></main-footer>
 </template>
 
 <script>
 import MainHeader from "./components/MainHeader.vue";
 import MyIntro from "./components/MyIntro.vue";
 import OrderSection from "./components/OrderSection.vue";
+import MainFooter from "./components/MainFooter.vue";
 
 export default {
   components: {
     MainHeader,
     MyIntro,
     OrderSection,
+    MainFooter,
   },
 };
 </script>
@@ -38,6 +41,7 @@ export default {
 a:focus,
 a:active {
   outline: none;
+  text-decoration: none;
 }
 
 nav,

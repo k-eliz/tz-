@@ -33,8 +33,7 @@ $ffamily: "Lato", sans-serif;
 .item {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
   gap: 10px;
 }
 .item__elements {
@@ -45,7 +44,7 @@ $ffamily: "Lato", sans-serif;
 }
 
 .item__text {
-  width: 188px;
+  max-width: 188px;
   text-align: center;
   color: #fff;
   font-family: $ffamily;
@@ -54,7 +53,10 @@ $ffamily: "Lato", sans-serif;
 }
 
 .item__dots {
-  align-self: center;
   max-width: 110px;
+  padding-top: 50px;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 8px 0 8px;
 }
 </style>
