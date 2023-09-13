@@ -1,55 +1,60 @@
 <template>
   <div class="item">
-    <img :src="source" alt="item" />
-    <h5>{{ text }}</h5>
+    <div class="item__elements">
+      <slot class="item__img"></slot>
+      <h5 class="item__text">{{ text }}</h5>
+    </div>
+    <img
+      v-if="isDots() === 'true'"
+      src="../assets/div.png"
+      alt="dots"
+      class="item__dots"
+    />
   </div>
 </template>
 
-<script setup>
-import { computed, defineProps } from "vue";
-
-const props = defineProps(["text", "img"]);
-
-const source = computed(() => {
-  return new URL(`../assets/${props.img}`, import.meta.url).href;
-});
-// export default {
-//   data: () => {
-//     return {
-//       source: "",
-//     };
-//   },
-//   props: {
-//     text: {
-//       type: String,
-//       required: true,
-//     },
-//     img: {
-//       type: String,
-//       required: true,
-//     },
-//   },
-//   // computed: {
-//   //   imgSrc() {
-//   //     console.log(this.props);
-//   //     if (this.props?.img) {
-//   //       return new URL(`../assets/${this.props.img}`, import.meta.url).href;
-//   //     }
-//   //     return "";
-//   //   },
-//   // },
-//   watch:{
-//     img(){
-
-//     }
-//   }
-// };
+<script>
+export default {
+  data() {
+    return {};
+  },
+  methods: {
+    isDots() {
+      console.log(this.dots);
+      return this.dots;
+    },
+  },
+  props: ["text", "dots"],
+};
 </script>
 
 <style lang="scss" scoped>
+$ffamily: "Lato", sans-serif;
 .item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.item__elements {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  align-items: center;
+}
+
+.item__text {
+  width: 188px;
+  text-align: center;
+  color: #fff;
+  font-family: $ffamily;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.item__dots {
+  align-self: center;
+  max-width: 110px;
 }
 </style>
