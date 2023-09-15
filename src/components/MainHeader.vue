@@ -8,6 +8,7 @@
             src="../assets/logo.png"
             alt="LoremIpsum.net"
         /></a>
+        <i class="fa-solid fa-bars header__menu"></i>
         <ul class="header__links">
           <a class="header__link" href="#">Бизнес</a>
           <a class="header__link" href="#">О нас</a>
@@ -48,6 +49,11 @@ $color: #3e9cdc;
   gap: 60px;
 }
 
+.header__menu {
+  display: none;
+  color: #fff;
+}
+
 .header__link {
   color: #fff;
   font-family: "Lato", sans-serif;
@@ -56,6 +62,31 @@ $color: #3e9cdc;
   text-transform: uppercase;
   &:hover {
     color: $color;
+  }
+}
+
+@media (max-width: 770px) {
+  .header__logo {
+    width: 180px;
+    height: 15px;
+  }
+  .header__links {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+  }
+  .header__link {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 550px) {
+  .header__links {
+    display: none;
+  }
+
+  .header__menu {
+    display: block;
   }
 }
 </style>

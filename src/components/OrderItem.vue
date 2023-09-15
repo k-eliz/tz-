@@ -59,4 +59,59 @@ $ffamily: "Lato", sans-serif;
   align-items: center;
   padding: 50px 8px 0 8px;
 }
+
+@media (max-width: 1250px) {
+  .item__dots {
+    width: 80px;
+    padding-top: 50px;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 8px 0 8px;
+  }
+  .item__text {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 990px) {
+  .item__dots {
+    width: 60px;
+    padding-top: 50px;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 8px 0 8px;
+  }
+  .item__text {
+    font-size: 10px;
+  }
+}
+@media (max-width: 770px) {
+  .item__dots {
+    width: 65px;
+    padding: 40px 8px 0 8px;
+  }
+  .item__text {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 650px) {
+  .item__dots {
+    width: 55px;
+    padding: 22px 8px 0 8px;
+  }
+  .item__text {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 550px) {
+  .item__dots {
+    display: none;
+  }
+  .item__text {
+    font-size: 10px;
+    padding-bottom: 8px;
+  }
+}
 </style>

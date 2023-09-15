@@ -34,29 +34,51 @@
           /></order-item>
         </div>
         <div class="order__inputs">
-          <select class="order__select" name="select">
-            <div class="placeholder" data-text="Выберите тип системы"></div>
+          <select class="order__select" v-model="selectedOption" name="select">
+            <option class="order__option" value="0" disabled>
+              Выберите тип системы
+            </option>
             <option class="order__option" value="1">Sed ut perspiciatis</option>
             <option class="order__option" value="2">Nemo enim ipsam</option>
             <option class="order__option" value="3">Et harum quidem</option>
             <option class="order__option" value="4">Temporibus autem</option>
             <option class="order__option" value="5">Itaque earum rerum</option>
           </select>
-          <input class="order__input" type="text" placeholder="Ваш e-mail" />
-          <input class="order__input" type="text" placeholder="Ваше имя" />
+          <input
+            class="order__input"
+            v-model="enteredEmail"
+            type="text"
+            placeholder="Ваш e-mail"
+          />
+          <input
+            class="order__input"
+            v-model="enteredName"
+            type="text"
+            placeholder="Ваше имя"
+          />
           <div class="order__range">
-            <h6 class="order__range_text">
-              Sed ut perspiciatis, unde omnis iste natus
-            </h6>
-            <input
-              class="slider"
-              type="range"
-              min="0"
-              max="100"
-              step="1"
-              value="75"
-              id="myRange"
-            />
+            <div class="order_range-info">
+              <h6 class="order__range_text">
+                Sed ut perspiciatis, unde omnis iste natus
+              </h6>
+              <p class="order__range-value">{{ sliderValue }}%</p>
+            </div>
+
+            <div class="slider-container">
+              <div
+                class="slider-inner"
+                :style="{ width: `${sliderValue}%` }"
+              ></div>
+              <input
+                class="slider"
+                type="range"
+                min="0"
+                max="100"
+                step="1"
+                id="myRange"
+                v-model="sliderValue"
+              />
+            </div>
           </div>
 
           <my-button class="order__btn_file"
@@ -76,6 +98,10 @@ export default {
   data() {
     return {
       range: document.querySelector(".slider"),
+      selectedOption: 0,
+      sliderValue: 75,
+      enteredName: "",
+      enteredEmail: "",
     };
   },
   methods: {
@@ -83,7 +109,6 @@ export default {
       this.range.addEventListener(
         "change",
         function () {
-          /* После отжатия кнопки мышки с ползунка */
           console.log(this.value);
         },
         false
@@ -92,7 +117,6 @@ export default {
       this.range.addEventListener(
         "input",
         function () {
-          /* Во время движения ползунка */
           console.log(this.value);
         },
         false
@@ -114,7 +138,6 @@ $ffamily: "Lato", sans-serif;
   background-size: cover;
   height: 100vh;
 }
-
 .order__title {
   color: #fff;
   font-family: $ffamily;
@@ -145,13 +168,16 @@ $ffamily: "Lato", sans-serif;
 }
 
 .order__img {
-  width: 100px;
+  max-width: 100px;
+  width: 100%;
 }
 
 .order__items {
   width: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   padding-top: 50px;
 }
 
@@ -207,10 +233,39 @@ $ffamily: "Lato", sans-serif;
   font-weight: 400;
 }
 
+.order_range-info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order__range-value {
+  padding-bottom: 20px;
+  color: #fff;
+  font-family: $ffamily;
+  font-size: 18px;
+  font-weight: 400;
+}
+
 .order__range {
   grid-row-start: 2;
   grid-column-start: 1;
   grid-column-end: 3;
+}
+
+.slider-container {
+  position: relative;
+}
+
+.slider-inner {
+  position: absolute;
+  background-color: #3e9cdc;
+  top: 7px;
+  z-index: 10;
+  left: 0;
+  height: 6px;
+  border-radius: 5px;
 }
 
 .slider {
@@ -264,5 +319,86 @@ $ffamily: "Lato", sans-serif;
   grid-row-start: 3;
   grid-column-start: 2;
   grid-column-end: 3;
+}
+
+@media (max-width: 1400px) {
+  .order__inputs {
+    grid-template-columns: repeat(auto-fit, 33%);
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 1250px) {
+  .order__items {
+    justify-content: center;
+  }
+  .order__img {
+    width: 80px;
+  }
+}
+
+@media (max-width: 770px) {
+  .order__items {
+    justify-content: center;
+  }
+  .order__img {
+    width: 60px;
+  }
+}
+
+@media (max-width: 650px) {
+  .order__inputs {
+    grid-template-columns: repeat(auto-fit, 20%);
+    justify-content: space-around;
+    grid-column-gap: 20px;
+    row-gap: 20px;
+  }
+  .order__input {
+    max-height: 50px;
+    font-size: 10px;
+  }
+
+  .order__img {
+    width: 44px;
+  }
+  .order__select {
+    max-height: 50px;
+    font-size: 10px;
+  }
+  .order__btn_file {
+    font-size: 10px;
+  }
+  .order__btn_send {
+    font-size: 10px;
+  }
+  .order__range_text {
+    font-size: 12px;
+  }
+  .order__range-value {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 550px) {
+  .order__items {
+    flex-direction: column;
+  }
+  .order__img {
+    width: 60px;
+  }
+  .order__items {
+    padding-top: 10px;
+  }
+
+  .order__title {
+    padding-top: 40px;
+  }
+
+  .order {
+    height: 120vh;
+  }
+  .order__inputs {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

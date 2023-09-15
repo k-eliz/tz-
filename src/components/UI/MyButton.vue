@@ -19,4 +19,20 @@ export default {};
   border-radius: 4px;
   border: 1px solid;
 }
+
+@media (max-width: 770px) {
+  .button {
+    width: 150px;
+  }
+}
+@media (max-width: 650px) {
+  .button {
+    width: 135px;
+  }
+}
+@media (max-width: 540px) {
+  .button {
+    height: 50px;
+  }
+}
 </style>

@@ -114,4 +114,22 @@ $ffamily: "Lato", sans-serif;
     text-transform: uppercase;
   }
 }
+
+@media (max-width: 1400px) {
+  .intro {
+    width: 100 vw;
+  }
+}
+@media (max-width: 770px) {
+  .intro__title {
+    font-size: 36px;
+  }
+  .intro__item {
+    font-size: 16px;
+  }
+
+  .intro__text {
+    font-size: 16px;
+  }
+}
 </style>
