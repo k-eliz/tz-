@@ -1,9 +1,12 @@
 {
+  "homepage": "http://k-eliz.github.io/tz1",
   "name": "tz-1",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
